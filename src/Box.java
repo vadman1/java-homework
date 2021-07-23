@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Box implements BoxInterface {
@@ -17,8 +19,8 @@ public class Box implements BoxInterface {
         return sweetnessList.remove(sweetnessList.size() - 1);
     }
 
-    public double getWeightBox() {
-        double totalWeight = 0;
+    public int getWeightBox() {
+        int totalWeight = 0;
 
         for (Sweetness sweetness : sweetnessList) {
             totalWeight += sweetness.getWeight();
@@ -41,8 +43,9 @@ public class Box implements BoxInterface {
 
     public void showAllInformation() {
         for (Sweetness sweetness : sweetnessList) {
-            System.out.println(sweetness.getName() + " " + sweetness.getWeight() + " " + sweetness.getPrice() +
-                    " " + sweetness.getUniqueParameter());
+            System.out.println("Название: " + sweetness.getName() +
+                    " Вес: " + sweetness.getWeight() + " Цена: " + sweetness.getPrice() +
+                    " Уникальный параметр: " + sweetness.getUniqueParameter());
         }
     }
 
@@ -50,18 +53,47 @@ public class Box implements BoxInterface {
     // с меньшим весом и меньшей ценой из коробки до тех пор, пока вес коробки
     // не станет меньше входного параметра.
 
-    /*
-    public void sortedBox() {
-
+    public void sortedBoxByWeight() {
+        Collections.sort(sweetnessList, new Comparator<Sweetness>() {
+            public int compare(Sweetness o1, Sweetness o2) {
+                return o2.getWeight() - o1.getWeight();    // сортировка по убыванию веса
+            }
+        });
     }
 
-    public void optimizeByWeight(double weight) {
-        while(weight > getWeightBox()){
+    public void sortedBoxByPrice() {
+        Collections.sort(sweetnessList, new Comparator<Sweetness>() {
+            public int compare(Sweetness o1, Sweetness o2) {
+                return o2.getPrice() - o1.getPrice();    // сортировка по убыванию цены
+            }
+        });
+    }
 
+    public void optimizeByWeight(int weight) {
+        if(weight < 0) {
+            System.out.println("Передайте в параметре положительное число");
+            return;
         }
+
+        sortedBoxByWeight();
+        while(getWeightBox() > weight){
+            removeLast();
+        }
+
+        if (sweetnessList.size() == 0) System.out.println("Коробка пуста");
     }
 
-    public void optimizeByPrice(double weight) {
+    public void optimizeByPrice(int weight) {
+        if(weight < 0) {
+            System.out.println("Передайте в параметре положительное число");
+            return;
+        }
 
-    }*/
+        sortedBoxByPrice();
+        while(getWeightBox() > weight){
+            removeLast();
+        }
+
+        if (sweetnessList.size() == 0) System.out.println("Коробка пуста");
+    }
 }

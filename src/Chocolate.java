@@ -2,7 +2,7 @@ public class Chocolate extends Sweetness {
 
     public Chocolate() { }
 
-    public Chocolate(String name, double weight, int price, String uniqueParameter) {
+    public Chocolate(String name, int weight, int price, String uniqueParameter) {
         setName(name);
         setWeight(weight);
         setPrice(price);
@@ -17,11 +17,11 @@ public class Chocolate extends Sweetness {
         this.name = name;
     }
 
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 

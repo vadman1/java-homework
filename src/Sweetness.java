@@ -1,6 +1,6 @@
 public abstract class Sweetness {
     protected String name;
-    protected double weight;
+    protected int weight;
     protected int price;
     protected String uniqueParameter;
 
@@ -9,9 +9,9 @@ public abstract class Sweetness {
 
     public abstract void setName(String name);
 
-    public abstract double getWeight();
+    public abstract int getWeight();
 
-    public abstract void setWeight(double weight);
+    public abstract void setWeight(int weight);
 
     public abstract int getPrice();
 
@@ -20,4 +20,5 @@ public abstract class Sweetness {
     public abstract String getUniqueParameter();
 
     public abstract void setUniqueParameter(String uniqueParameter);
+
 }

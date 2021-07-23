@@ -2,7 +2,7 @@ public class Cookie extends Sweetness{
 
     public Cookie() { }
 
-    public Cookie(String name, double weight, int price, String uniqueParameter) {
+    public Cookie(String name, int weight, int price, String uniqueParameter) {
         setName(name);
         setWeight(weight);
         setPrice(price);
@@ -17,11 +17,11 @@ public class Cookie extends Sweetness{
         this.name = name;
     }
 
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
